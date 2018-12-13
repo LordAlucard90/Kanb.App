@@ -2,10 +2,14 @@ from rest_framework import routers
 from . import views
 from django.urls import path
 
-router = routers.DefaultRouter()
+
+# To know more about routers urls
+# https://www.django-rest-framework.org/api-guide/routers/#defaultrouter
+router = routers.DefaultRouter(trailing_slash=True)
+router.register('task', views.TaskViewSet)
 
 app_name = 'example'
 
 urlpatterns = [
-    path('task/', views.TaskViewSet.as_view({'get': 'list', 'post': 'create'}), name='task-list')
-]
+    # Additional personalized urls
+] + router.urls
