@@ -7,5 +7,5 @@ router = routers.DefaultRouter()
 app_name = 'example'
 
 urlpatterns = [
-    path('task/', views.TaskViewSet.as_view({'get': 'list'}), name='task-list')
+    path('task/', views.TaskViewSet.as_view({'get': 'list', 'post': 'create'}), name='task-list')
 ]
