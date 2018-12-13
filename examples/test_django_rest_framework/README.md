@@ -3,4 +3,5 @@
 This is an example showing how to implement the DjangoRestFramework
 library
 
-https://www.django-rest-framework.org
+Main page : https://www.django-rest-framework.org \
+Testing guide : https://www.django-rest-framework.org/api-guide/testing/
