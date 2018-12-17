@@ -15,6 +15,7 @@ features and to take note about decision making.
             - Working
             - Verify
             - Completed
+                - Sub-columns
 
         - Priority values
         - categories
