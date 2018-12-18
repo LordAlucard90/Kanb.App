@@ -1,0 +1,225 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-12-18T15:56:02.265Z",
+	"__export_source": "insomnia.desktop.app:v6.3.1",
+	"resources": [
+		{
+			"_id": "wrk_4b95739b7f3e437d8f295476a84d52a8",
+			"created": 1545147299974,
+			"description": "",
+			"modified": 1545147299974,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_c4eeaba622d54fb483a655c502a4ed42",
+			"color": null,
+			"created": 1545147300056,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1545147300056,
+			"modified": 1545147300056,
+			"name": "New Environment",
+			"parentId": "wrk_4b95739b7f3e437d8f295476a84d52a8",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_17efab7f33844d3ebe4b7a02248a6262",
+			"cookies": [],
+			"created": 1545147300062,
+			"modified": 1545147300062,
+			"name": "Default Jar",
+			"parentId": "wrk_4b95739b7f3e437d8f295476a84d52a8",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_5354b1f8acd34cf39da5d37221415954",
+			"created": 1545147392293,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1545147392293,
+			"modified": 1545147692681,
+			"name": "Kanb.App",
+			"parentId": "wrk_4b95739b7f3e437d8f295476a84d52a8",
+			"_type": "request_group"
+		},
+		{
+			"_id": "env_3026d00c9e194e1f821e5117c6a7cf8e",
+			"color": "#00a517",
+			"created": 1545147712111,
+			"data": {
+				"base_url": "127.0.0.1:8000"
+			},
+			"isPrivate": false,
+			"metaSortKey": 1545147712111,
+			"modified": 1545147820301,
+			"name": "Testing",
+			"parentId": "env_c4eeaba622d54fb483a655c502a4ed42",
+			"_type": "environment"
+		},
+		{
+			"_id": "fld_1a9e2bf8e14841afbd4673e5e84a884c",
+			"created": 1545147424564,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1545147424564,
+			"modified": 1545147424564,
+			"name": "Task",
+			"parentId": "fld_5354b1f8acd34cf39da5d37221415954",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_045126d120c245458cdfce027ea88907",
+			"authentication": {},
+			"body": {},
+			"created": 1545147433815,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1545147433815,
+			"method": "GET",
+			"modified": 1545148183204,
+			"name": "all tasks",
+			"parameters": [],
+			"parentId": "fld_1a9e2bf8e14841afbd4673e5e84a884c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/task/",
+			"_type": "request"
+		},
+		{
+			"_id": "req_451b3961ae3a4ee482dc4edebaeeb51d",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"title\":\"aTask\",\n\t\"description\": \"with a description\"\n}"
+			},
+			"created": 1545147860569,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_cd8bdae5ceae4846a458245dd2955319",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1545147433765,
+			"method": "POST",
+			"modified": 1545148174141,
+			"name": "aTask",
+			"parameters": [],
+			"parentId": "fld_1a9e2bf8e14841afbd4673e5e84a884c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/task/",
+			"_type": "request"
+		},
+		{
+			"_id": "req_522fc5a8df61429da884d760f8dc43d7",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"created": 1545148150522,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_cd8bdae5ceae4846a458245dd2955319",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1545147433715,
+			"method": "DELETE",
+			"modified": 1545148231427,
+			"name": "aTask",
+			"parameters": [],
+			"parentId": "fld_1a9e2bf8e14841afbd4673e5e84a884c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/task/2/",
+			"_type": "request"
+		},
+		{
+			"_id": "req_d9d76c71141346a18ba2fdec1b586839",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\t\n\t\"description\": \"with a different description\"\n}"
+			},
+			"created": 1545148247521,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_cd8bdae5ceae4846a458245dd2955319",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1545147433740,
+			"method": "PATCH",
+			"modified": 1545148288181,
+			"name": "aTask",
+			"parameters": [],
+			"parentId": "fld_1a9e2bf8e14841afbd4673e5e84a884c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/task/2/",
+			"_type": "request"
+		},
+		{
+			"_id": "req_9aad1174482e453e93604ac3456168bb",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\t\n\t\"title\":\"aTask\",\n\t\"description\": \"with a different description\"\n}"
+			},
+			"created": 1545148426408,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_cd8bdae5ceae4846a458245dd2955319",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1545147433727.5,
+			"method": "PUT",
+			"modified": 1545148461560,
+			"name": "aTask",
+			"parameters": [],
+			"parentId": "fld_1a9e2bf8e14841afbd4673e5e84a884c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/task/2/",
+			"_type": "request"
+		}
+	]
+}

@@ -5,7 +5,7 @@ from rest_framework.test import APITestCase
 from .models import Task
 
 
-class TaskCreation(APITestCase):
+class TaskCreationTesting(APITestCase):
     task_list_url = reverse('task_managing:task-list')
 
     def test_given_task_data_when_post_than_create_task(self):
@@ -15,7 +15,7 @@ class TaskCreation(APITestCase):
         self.assertEqual(Task.objects.get().title, 'First task')
 
 
-class TaskUrlTesting(APITestCase):
+class TaskRUDTesting(APITestCase):
     task_list_url = reverse('task_managing:task-list')
     task_detail_url = reverse('task_managing:task-detail', kwargs={'pk': 1})
 
