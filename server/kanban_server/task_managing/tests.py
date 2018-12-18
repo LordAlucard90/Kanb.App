@@ -22,6 +22,11 @@ class TaskCreationTesting(APITestCase):
         response = self.client.post(self.task_list_url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
+    def test_given_working_status_when_post_than_not_create_task(self):
+        data = {"title": "aTask", "status": "WORKING"}
+        response = self.client.post(self.task_list_url, data, format='json')
+        self.assertNotEqual(response.status_code, status.HTTP_201_CREATED)
+
 
 class TaskRUDTesting(APITestCase):
     task_list_url = reverse('task_managing:task-list')
