@@ -26,7 +26,7 @@ class TaskCreationTesting(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_given_working_status_when_post_than_not_create_task(self):
-        data = {"title": "aTask", "status": "WORKING"}
+        data = {"title": "aTask", "status": "BAD STATUS"}
         response = self.client.post(self.task_list_url, data, format='json')
         self.assertNotEqual(response.status_code, status.HTTP_201_CREATED)
 
@@ -74,7 +74,7 @@ class TaskViewTesting(APITestCase):
 
     def test_given_board_view_when_called_than_correct_context(self):
         response = self.client.get(self.board_url)
-        keys = ('tasks', 'title', )
+        keys = ('tasks', 'title', 'columns',)
 
         for k in keys:
             self.assertIn(k, response.context)

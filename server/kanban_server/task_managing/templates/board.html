@@ -9,27 +9,23 @@
 <body>
 <div class="container p-3">
     <div class="card-group pt-4">
-        <div class="card border border-dark">
-            <div class="card-header text-center pb-2">
-                All tasks
+        {% for c in columns %}
+            <div class="card border border-dark">
+                <div class="card-header text-center pb-2">
+                    {{ c|title }}
+                </div>
+                <div class="card-body px-2">
+                    {% for t in tasks %}
+                        {% if t.status == c %}
+                            <div class="card mb-2 bg-warning">
+                                <div class="card-header">#{{ t.id }} - {{ t.title }}</div>
+                                <div class="card-body">{{ t.description }}</div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
-            <div class="card-body px-2">
-                {% for t in tasks %}
-                    <div class="card mb-2 bg-warning">
-                        <div class="card-header">#{{ t.id }} - {{ t.title }}</div>
-                        <div class="card-body">{{ t.description }}</div>
-                        {#                    <div class="card-footer"></div>#}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="card border border-dark">
-            <div class="card-header text-center pb-2">
-                Completed
-            </div>
-            <div class="card-body px-2">
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 </body>
