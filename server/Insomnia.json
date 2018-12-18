@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2018-12-18T15:56:02.265Z",
+	"__export_date": "2018-12-18T16:41:13.427Z",
 	"__export_source": "insomnia.desktop.app:v6.3.1",
 	"resources": [
 		{
@@ -98,7 +98,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/json",
-				"text": "{\n\t\"title\":\"aTask\",\n\t\"description\": \"with a description\"\n}"
+				"text": "{\n\t\"title\":\"aTask\",\n\t\"description\": \"with a description\",\n\t\"status\": \"TODO\"\n}"
 			},
 			"created": 1545147860569,
 			"description": "",
@@ -112,7 +112,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1545147433765,
 			"method": "POST",
-			"modified": 1545148174141,
+			"modified": 1545151248431,
 			"name": "aTask",
 			"parameters": [],
 			"parentId": "fld_1a9e2bf8e14841afbd4673e5e84a884c",
@@ -144,7 +144,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1545147433715,
 			"method": "DELETE",
-			"modified": 1545148231427,
+			"modified": 1545150024504,
 			"name": "aTask",
 			"parameters": [],
 			"parentId": "fld_1a9e2bf8e14841afbd4673e5e84a884c",
@@ -154,7 +154,7 @@
 			"settingRebuildPath": true,
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
-			"url": "{{ base_url  }}/task/2/",
+			"url": "{{ base_url  }}/task/4/",
 			"_type": "request"
 		},
 		{
