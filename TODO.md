@@ -1,5 +1,5 @@
 # TODO
-This is a documento to share steps and dev in the team, to discuss
+This is a document to share steps and dev in the team, to discuss
 features and to take note about decision making.
 
 #### Legend:
