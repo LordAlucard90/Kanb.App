@@ -9,5 +9,5 @@ router.register('task', views.TaskViewSet)
 app_name = 'task_managing'
 
 urlpatterns = [
-    # Additional personalized urls
+    path('board', views.BoardView.as_view(), name='board')
 ] + router.urls
