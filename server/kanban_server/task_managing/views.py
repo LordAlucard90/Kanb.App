@@ -12,6 +12,7 @@ class TaskViewSet(viewsets.ModelViewSet):
 
 
 class BoardView(TemplateView):
+    # template_name = 'material-board.html'
     template_name = 'board.html'
     extra_context = {'title': 'Main board'}
 

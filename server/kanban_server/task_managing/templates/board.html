@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>{{ title }}</title>
+    <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}" media="screen,projection"/>
 </head>
 <body>
 <div class="container p-3">
@@ -18,8 +20,10 @@
                     {% for t in tasks %}
                         {% if t.status == c %}
                             <div class="card mb-2 bg-warning">
-                                <div class="card-header">#{{ t.id }} - {{ t.title }}</div>
-                                <div class="card-body">{{ t.description }}</div>
+                                <div class="card-header">
+                                    <span class="card-title">#{{ t.id }} - {{ t.title }}</span>
+                                </div>
+                                <div class="card-body card-content">{{ t.description }}</div>
                             </div>
                         {% endif %}
                     {% endfor %}
