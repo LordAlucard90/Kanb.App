@@ -1,7 +1,10 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.views.generic import TemplateView
 from rest_framework import status
 from rest_framework.test import APITestCase
+
+from .views import BoardView
 from .models import Task
 
 
@@ -22,10 +25,16 @@ class TaskCreationTesting(APITestCase):
         response = self.client.post(self.task_list_url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-    def test_given_working_status_when_post_than_not_create_task(self):
-        data = {"title": "aTask", "status": "WORKING"}
+    def test_given_bad_status_when_post_than_not_create_task(self):
+        data = {"title": "aTask", "status": "BAD STATUS"}
         response = self.client.post(self.task_list_url, data, format='json')
         self.assertNotEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_given_aTask_when_post_than_default_status_is_backlog(self):
+        data = {"title": "aTask", }
+        response = self.client.post(self.task_list_url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data['status'], 'BACKLOG')
 
 
 class TaskRUDTesting(APITestCase):
@@ -59,3 +68,21 @@ class TaskRUDTesting(APITestCase):
 
         data = {'title': 'First task', 'description': 'This is a description', "status": "BACKLOG"}
         self.assertEqual(response.data, data)
+
+
+class TaskViewTesting(APITestCase):
+    board_url = reverse('task_managing:board')
+
+    def setUp(self):
+        x = Task(title='First task')
+        x.save()
+        self.saved_task = x
+
+    def test_given_board_view_when_called_than_correct_context(self):
+        response = self.client.get(self.board_url)
+        keys = ('tasks', 'title', 'columns',)
+
+        for k in keys:
+            self.assertIn(k, response.context)
+
+        self.assertEqual(self.saved_task.title, response.context['tasks'][0].title)
