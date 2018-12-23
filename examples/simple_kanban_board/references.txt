@@ -1,8 +1,0 @@
-bootstrap
-https://getbootstrap.com/
-
-cards
-https://getbootstrap.com/docs/4.1/components/card/
-
-borders
-https://getbootstrap.com/docs/4.1/utilities/borders/
