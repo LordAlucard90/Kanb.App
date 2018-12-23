@@ -12,12 +12,13 @@ class TaskCreationTesting(APITestCase):
     task_list_url = reverse('task_managing:task-list')
 
     def test_given_task_data_when_post_than_create_task(self):
-        data = {"title": "First task", "status": "BACKLOG"}
+        data = {"title": "First task", "status": "BACKLOG", 'owner':'Ayeye Brazorf'}
         response = self.client.post(self.task_list_url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Task.objects.count(), 1)
         self.assertEqual(Task.objects.get().title, 'First task')
         self.assertEqual(Task.objects.get().status, 'BACKLOG')
+        self.assertEqual(Task.objects.get().owner, 'Ayeye Brazorf')
         self.assertEqual(response.data['status'], 'BACKLOG')
 
     def test_given_status_when_post_than_create_task(self):
@@ -60,13 +61,14 @@ class TaskRUDTesting(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['title'], self.saved_task.title)
         self.assertEqual(response.data['description'], self.saved_task.description)
+        self.assertEqual(response.data['owner'], self.saved_task.description)
 
     def test_given_task_when_update_description_than_check_description(self):
         response = self.client.patch(self.task_detail_url, {'description': 'This is a description'}, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Task.objects.get().description, 'This is a description')
 
-        data = {'title': 'First task', 'description': 'This is a description', "status": "BACKLOG"}
+        data = {'title': 'First task', 'description': 'This is a description', "status": "BACKLOG", 'owner': ''}
         self.assertEqual(response.data, data)
 
 

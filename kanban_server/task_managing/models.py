@@ -10,3 +10,4 @@ class Task(models.Model):
     description = models.CharField(max_length=200, default='')
     created = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=20, default=STATUS_LIST[0], choices=STATUS_CHOICES)
+    owner = models.CharField(max_length=50, default='')
