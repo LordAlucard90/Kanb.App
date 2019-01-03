@@ -5,14 +5,14 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 from .views import BoardView
-from .models import Task
+from .models import Task, Event
 
 
 class TaskCreationTesting(APITestCase):
     task_list_url = reverse('task_managing:task-list')
 
     def test_given_task_data_when_post_than_create_task(self):
-        data = {"title": "First task", "status": "BACKLOG", 'owner':'Ayeye Brazorf'}
+        data = {"title": "First task", "status": "BACKLOG", 'owner': 'Ayeye Brazorf'}
         response = self.client.post(self.task_list_url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Task.objects.count(), 1)
@@ -69,7 +69,7 @@ class TaskRUDTesting(APITestCase):
         self.assertEqual(Task.objects.get().description, 'This is a description')
 
         data = {'title': 'First task', 'description': 'This is a description', "status": "BACKLOG", 'owner': ''}
-        self.assertEqual(response.data, data)
+        self.assertEqual(response.data['description'], data['description'])
 
 
 class TaskViewTesting(APITestCase):
@@ -88,3 +88,38 @@ class TaskViewTesting(APITestCase):
             self.assertIn(k, response.context)
 
         self.assertEqual(self.saved_task.title, response.context['tasks'][0].title)
+
+
+class EventDrivenTaskChange(TestCase):
+    """
+    post_save¶ - django.db.models.signals.post_save¶
+    Like pre_save, but sent at the end of the save() method.
+
+    Arguments sent with this signal:
+        sender - The model class.
+        instance - The actual instance being saved.
+        created - A boolean; True if a new record was created.
+        raw - A boolean; True if the model is saved exactly as presented
+        using - The database alias being used.
+        update_fields - The set of fields to update as passed to Model.save(), or None
+    """
+
+    def setUp(self):
+        self.data = {"title": "First task", "status": "BACKLOG", 'owner': 'Ayeye Brazorf'}
+        self.x = Task(**self.data)
+        self.x.save()
+
+    def test_given_task_when_created_than_write_event_for_creation(self):
+        event = Event.objects.all().first()
+        self.assertEqual("CREATED", event.name)
+        self.assertNotEqual("UPDATED", event.name)
+
+    def test_given_task_when_changed_than_write_event(self):
+        x = Task.objects.get()
+        self.assertEqual('BACKLOG', x.status)
+        self.x.status = 'TODO'
+        self.x.save()
+
+        event = Event.objects.get(id=2)
+        self.assertEqual("UPDATED", event.name)
+        self.assertNotEqual("CREATED", event.name)

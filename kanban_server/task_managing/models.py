@@ -14,3 +14,8 @@ class Task(models.Model):
     owner = models.CharField(max_length=50, default='')
     work_points = models.PositiveSmallIntegerField(default=0)
     category = models.CharField(max_length=40, default='UNCATEGORIZED')
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=20, null=True)
+
