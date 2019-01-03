@@ -3,7 +3,9 @@ from django.urls import reverse
 from django.views.generic import TemplateView
 from rest_framework import status
 from rest_framework.test import APITestCase
+from rest_framework.utils import json
 
+from .serializers import TaskSerializer
 from .views import BoardView
 from .models import Task, Event
 
@@ -123,3 +125,8 @@ class EventDrivenTaskChange(TestCase):
         event = Event.objects.get(id=2)
         self.assertEqual("UPDATED", event.name)
         self.assertNotEqual("CREATED", event.name)
+        self.assertEqual(x.id, event.object_id)
+
+        print(event.JSON)
+        loaded_json = json.loads(event.JSON)
+        self.assertEqual(loaded_json['status'], ('BACKLOG', 'TODO',))

@@ -18,4 +18,8 @@ class Task(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=20, null=True)
+    object_id = models.BigIntegerField()
+    JSON = models.TextField(max_length=1000)
+    created = models.DateTimeField(default=timezone.now)
+
 
