@@ -21,6 +21,6 @@ def log_task_change(sender, instance: models.Task, created, **kwargs):
     d = model_to_dict(instance)
     d['created'] = str(instance.created.isoformat())
     d['due_date'] = str(instance.created.isoformat())
-    d['status'] = ('BACKLOG', 'TODO')
+    d['status'] = ['BACKLOG', 'TODO']
     x.JSON = json.dumps(d)
     x.save()

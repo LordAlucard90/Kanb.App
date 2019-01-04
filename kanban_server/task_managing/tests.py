@@ -127,6 +127,5 @@ class EventDrivenTaskChange(TestCase):
         self.assertNotEqual("CREATED", event.name)
         self.assertEqual(x.id, event.object_id)
 
-        print(event.JSON)
         loaded_json = json.loads(event.JSON)
-        self.assertEqual(loaded_json['status'], ('BACKLOG', 'TODO',))
+        self.assertEqual(loaded_json['status'], ['BACKLOG', 'TODO',])
